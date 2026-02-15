@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strategic Consulting Services</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: #020617;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 500px;
+            height: 500px;
+            background: rgba(245, 158, 11, 0.05);
+            border-radius: 50%;
+            filter: blur(100px);
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 64px;
+            align-items: center;
+            padding: 80px 0;
+            position: relative;
+            z-index: 10;
+        }
+
+        .hero-content h1 {
+            font-size: 4rem;
+            color: #fff;
+            line-height: 1.2;
+            margin-bottom: 24px;
+        }
+
+        .hero-content .highlight {
+            color: #f59e0b;
+        }
+
+        .hero-content p {
+            font-size: 1.25rem;
+            color: #94a3b8;
+            margin-bottom: 32px;
+            line-height: 1.8;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            padding-top: 16px;
+        }
+
+        .btn-primary {
+            background: #f59e0b;
+            color: #000;
+            padding: 16px 32px;
+            border-radius: 8px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: background 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        .btn-primary:hover {
+            background: #d97706;
+        }
+
+        .btn-secondary {
+            border: 1px solid #334155;
+            color: #cbd5e1;
+            padding: 16px 32px;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .btn-secondary:hover {
+            border-color: #f59e0b;
+            color: #f59e0b;
+        }
+
+        .hero-image {
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 700px;
+           /* object-fit: cover;*/
+        }
+
+        .hero-image-bg {
+            position: absolute;
+            inset: 0;
+            opacity: 0.2;
+        }
+
+        .hero-image-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(2, 6, 23, 0.6), transparent);
+        }
+
+        /* Services Section */
+        .services {
+            background: #fff;
+            padding: 128px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .section-header h2 {
+            font-size: 3rem;
+            color: #0f172a;
+            margin-bottom: 16px;
+        }
+
+        .section-header p {
+            font-size: 1.125rem;
+            color: #475569;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 32px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .service-card {
+            transition: all 0.3s;
+        }
+
+        .service-icon {
+            width: 48px;
+            height: 48px;
+            background: rgba(245, 158, 11, 0.1);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+            transition: background 0.3s;
+        }
+
+        .service-icon svg {
+            width: 24px;
+            height: 24px;
+            stroke: #d97706;
+            transition: stroke 0.3s;
+        }
+
+        .service-card:hover .service-icon {
+            background: #f59e0b;
+        }
+
+        .service-card:hover .service-icon svg {
+            stroke: #000;
+        }
+
+        .service-card h3 {
+            font-size: 1.25rem;
+            color: #0f172a;
+            margin-bottom: 12px;
+        }
+
+        .service-card p {
+            color: #475569;
+            line-height: 1.8;
+        }
+
+        /* About Section */
+        .about {
+            background: #020617;
+            padding: 128px 0;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .about-image {
+            width: 320px;
+            height: 320px;
+            border-radius: 16px;
+            overflow: hidden;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .about-content h2 {
+            font-size: 3rem;
+            color: #fff;
+            margin-bottom: 32px;
+        }
+
+        .about-content p {
+            color: #94a3b8;
+            font-size: 1.125rem;
+            line-height: 1.8;
+            margin-bottom: 16px;
+        }
+
+        .about-experience {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+            padding-top: 32px;
+        }
+
+        .experience-item {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .experience-item svg {
+            width: 32px;
+            height: 32px;
+            stroke: #f59e0b;
+        }
+
+        .experience-item h4 {
+            color: #fff;
+        }
+
+        .experience-item p {
+            font-size: 0.875rem;
+            color: #64748b;
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            background: #fff;
+            padding: 128px 0;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .testimonial-card {
+            border: 1px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 32px;
+        }
+
+        .testimonial-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+
+        .testimonial-avatar {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            overflow: hidden;
+            background: #e2e8f0;
+        }
+
+        .testimonial-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .testimonial-info h4 {
+            color: #0f172a;
+            margin-bottom: 4px;
+        }
+
+        .testimonial-info p {
+            font-size: 0.875rem;
+            color: #475569;
+        }
+
+        .testimonial-content {
+            color: #334155;
+            line-height: 1.8;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: #020617;
+            padding: 128px 0;
+            color: #fff;
+        }
+
+        .contact-wrapper {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .section-header.light h2 {
+            color: #fff;
+        }
+
+        .section-header.light p {
+            color: #94a3b8;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: start;
+            gap: 16px;
+        }
+
+        .contact-item svg {
+            width: 24px;
+            height: 24px;
+            stroke: #f59e0b;
+            margin-top: 4px;
+        }
+
+        .contact-item-label {
+            font-size: 0.875rem;
+            color: #64748b;
+            margin-bottom: 4px;
+        }
+
+        .contact-item-value {
+            color: #fff;
+        }
+
+        .contact-divider {
+            padding-top: 32px;
+            border-top: 1px solid #1e293b;
+        }
+
+        .contact-note {
+            font-size: 0.875rem;
+            color: #64748b;
+        }
+
+        /* Form */
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .form-group label {
+            font-size: 0.875rem;
+            color: #94a3b8;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            padding: 12px 16px;
+            border-radius: 8px;
+            background: #0f172a;
+            border: 1px solid #1e293b;
+            color: #fff;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: #475569;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #f59e0b;
+        }
+
+        .form-group textarea {
+            resize: none;
+            font-family: inherit;
+        }
+
+        .form-submit {
+            width: 100%;
+        }
+
+        .success-message {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 64px 0;
+        }
+
+        .success-message svg {
+            width: 64px;
+            height: 64px;
+            stroke: #f59e0b;
+            margin-bottom: 16px;
+        }
+
+        .success-message h3 {
+            font-size: 1.5rem;
+            margin-bottom: 8px;
+        }
+
+        .success-message p {
+            color: #94a3b8;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        /* Footer */
+        .footer {
+            margin-top: 128px;
+            padding-top: 32px;
+            border-top: 1px solid #0f172a;
+            text-align: center;
+            color: #475569;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero-grid,
+            .about-grid,
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 48px;
+            }
+
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .hero-content h1 {
+                font-size: 3rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .services-grid,
+            .testimonials-grid,
+            .about-experience {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .section-header h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-grid">
+                <div class="hero-content">
+                    <h1>Strategic <span class="highlight">Excellence</span></h1>
+                    <p>Many companies don’t struggle because they lack effort. They struggle because product decisions, marketing activities, and business goals are not aligned.</p>
+                    <p></p>
+                    <p>I am here to help Your startup achieve their full potential by designing clear product direction, measurable growth systems, and data-informed decision frameworks and through expert consulting in growth, digital marketing, product strategy, and project management.</p>
+                    <div class="hero-buttons">
+                        <a href="#contact" class="btn-primary">
+                            Get Started
+                            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                            </svg>
+                        </a>
+                        <a href="#about" class="btn-secondary">Learn More</a>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="hero-image-bg">
+                        <img src="assets/chessbk.png" alt="Chess background">
+                    </div>
+                    <img src="assets/chess.png" alt="Strategic consulting - chess piece">
+                    <div class="hero-image-overlay"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services">
+        <div class="container">
+            <div class="section-header">
+                <h2>Services</h2>
+                <p>Specialized expertise to help your business thrive</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
+                        </svg>
+                    </div>
+                    <h3>Product Strategy Development</h3>
+                    <p>Define what to build, for whom, and why — before investing further.</p>
+                    <p>
+                        Product–Market Fit evaluation
+
+                        Customer and value proposition clarification
+
+                        Strategic roadmap design
+
+                        Prioritization frameworks for product teams
+                    </p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                    </div>
+                    <h3>Growth & Digital Strategy</h3>
+                    <p>Turn fragmented marketing efforts into a coherent growth model.</p>
+                    <p>
+                        Funnel and journey analysis
+
+                        Channel strategy based on evidence, not trends
+
+                        KPI architecture and measurement logic
+
+                        Sustainable acquisition and retention design
+                    </p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
+                        </svg>
+                    </div>
+                    <h3>Decision-Support & Analytics Enablement</h3>
+                    <p>Create visibility so leadership can make confident, timely decisions.</p>
+                    <p>
+                        North Star metric definition
+
+Business intelligence structure
+
+Dashboard logic focused on decisions, not reporting
+
+Data-to-action workflows
+                    </p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/>
+                        </svg>
+                    </div>
+                    <h3>Digital Transition for Traditional Businesses</h3>
+                    <p>Support organizations moving from offline or legacy models into modern digital operations.</p>
+                    <p>
+                        Digitalization roadmap
+
+Customer experience redesign
+
+Tooling and capability selection
+
+Change support for leadership teams
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-image">
+                    <img src="assets/me.png" alt="Professional consultant">
+                </div>
+                <div class="about-content">
+                    <h2>About Me</h2>
+                    <div>
+                        <p>
+                            I am a strategic product and growth consultant helping startups and established businesses make better decisions before they scale.
+
+Before working independently, I spent more than a decade building and growing digital products within large-scale marketplace environments, including businesses such as Divar and Digikala. These platforms operated with millions of users and complex, fast-moving ecosystems, where product decisions had direct impact on growth, liquidity, and customer value.
+
+My work has focused on aligning product strategy, customer needs, and business economics to deliver sustainable, measurable growth rather than short-term traction. I have led initiatives across B2C, retail, SaaS, and B2B2C models, consistently driving double-digit revenue growth, improving prioritization, and helping organizations scale with operational clarity.
+
+This includes designing product strategies, introducing data-informed decision frameworks, and enabling cross-functional teams to execute with focus, speed, and shared objectives.
+
+My approach combines product thinking, growth strategy, and execution discipline to turn ambiguity into a clear operating model.
+                        </p>
+                    </div>
+                    <div class="about-experience">
+                        <div class="experience-item">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                            </svg>
+                            <h4>10+ Years Experience</h4>
+                            <p>10+ Years of Experience
+Designing, launching, and scaling digital products and marketplaces.</p>
+                        </div>
+                        <div class="experience-item">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/>
+                            </svg>
+                            <h4>Cross-Functional Leadership</h4>
+                            <p>Aligning product, marketing, data, and business teams around shared outcomes</p>
+                        </div>
+                        <div class="experience-item">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/>
+                            </svg>
+                            <h4>Proven Business Impact</h4>
+                            <p>Delivering measurable growth, stronger unit economics, and faster time-to-market.</p>
+                        </div>
+                        <div class="experience-item">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 14l9-5-9-5-9 5 9 5z"/>
+                                <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"/>
+                            </svg>
+                            <h4>Practical, Data-Informed Approach</h4>
+                            <p>Replacing assumptions with insight to support confident decision-making.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <h2>Testimonials</h2>
+                <p>What clients say about working together</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">
+                            <img src="assets/dares.jpeg" alt="Shoppino">
+                        </div>
+                        <div class="testimonial-info">
+                            <h4>Alireza Darestani</h4>
+                            <p>CEO, Shoppino - Iran</p>
+                        </div>
+                    </div>
+                    <div class="testimonial-content">
+                        "Working with Shadi was a turning point for us at Shoppino. She helped us conceptualize and implement an AI-powered Shopping Assistant that truly enhanced how users discover and evaluate products inside our app. Beyond the technology itself, she brought a structured product mindset—refining our user journey, identifying key friction points in the funnel, and aligning the feature with clear business metrics. As a result, we achieved a significant improvement in conversion rates and increased our revenue by over 50%. "
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">
+                            <img src="assets/hamidamir.jpeg" alt="Dotical">
+                        </div>
+                        <div class="testimonial-info">
+                            <h4>Hamid AmirMoeeni</h4>
+                            <p>CEO, Dotical MSP - Dubai</p>
+                        </div>
+                    </div>
+                    <div class="testimonial-content">
+                        "Our digital marketing ROI increased by 300% within six months. The expertise in campaign optimization and analytics was exactly what we needed.She combines strategic clarity with hands-on execution, and her ability to translate complex ideas into practical, high-impact solutions made a measurable difference to our growth."
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-header">
+                        <div class="testimonial-avatar">
+                            <img src="assets/kiana.jpeg" alt="DayaGold">
+                        </div>
+                        <div class="testimonial-info">
+                            <h4>Kiana Khosravi</h4>
+                            <p>Founder, DayaGold , Iran</p>
+                        </div>
+                    </div>
+                    <div class="testimonial-content">
+                        "Professional, insightful, and results-oriented. The project management expertise kept our complex initiative on track and delivered exceptional outcomes."
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="contact-wrapper">
+                <div class="section-header light">
+                    <h2>Let's Work Together</h2>
+
+                    <p>Ready to transform your business? Get in touch to schedule a consultation</p>
+                </div>
+                <div class="contact-grid">
+
+                    <div class="contact-info">
+
+                        <div>
+                             <p>We begin with a focused diagnostic session to understand:
+
+<ul>Your current growth constraints</ul>
+
+<ul>Where decisions are unclear or unsupported</ul>
+
+<ul>Whether a collaboration would create real value</ul>
+
+If there is no clear fit, you will leave with useful perspective anyway.</p>
+
+
+                        </div>
+                        <div class="contact-divider">
+<div class="contact-item">
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                                </svg>
+                                <div>
+                                    <div class="contact-item-label">Email</div>
+                                    <div class="contact-item-value">Available upon request</div>
+                                </div>
+                            </div>
+                            <div class="contact-item">
+                                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                                </svg>
+                                <div>
+                                    <div class="contact-item-label">Phone</div>
+                                    <div class="contact-item-value">Available upon request</div>
+                                </div>
+                            </div>
+                            <p class="contact-note">Typical response time: Within 24 hours</p>
+                        </div>
+                    </div>
+                    <div>
+                        <form id="contactForm" class="contact-form">
+                            <div class="form-group">
+                                <label for="email">Email Address *</label>
+                                <input type="email" id="email" name="email" placeholder="your@email.com" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone Number *</label>
+                                <input type="tel" id="phone" name="phone" placeholder="+1 (555) 000-0000" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Message (Optional)</label>
+                                <textarea id="message" name="message" rows="4" placeholder="Tell me about your project..."></textarea>
+                            </div>
+                            <button type="submit" class="btn-primary form-submit">
+                                Send Request
+                                <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
+                                </svg>
+                            </button>
+                        </form>
+                        <div id="successMessage" class="success-message hidden">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                            <h3>Thank you!</h3>
+                            <p>I'll get back to you within 24 hours.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer">
+                <p>© 2026 Strategic Consulting Services. All rights reserved.</p>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Contact form handling
+        const contactForm = document.getElementById('contactForm');
+        const successMessage = document.getElementById('successMessage');
+
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // Get form data
+            const formData = {
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value,
+                message: document.getElementById('message').value
+            };
+
+            // Log form data (in production, send to backend)
+            console.log('Form submitted:', formData);
+
+            // Show success message
+            contactForm.classList.add('hidden');
+            successMessage.classList.remove('hidden');
+
+            // Reset form after 3 seconds
+            setTimeout(() => {
+                contactForm.classList.remove('hidden');
+                successMessage.classList.add('hidden');
+                contactForm.reset();
+            }, 3000);
+        });
+    </script>
+</body>
+</html>
