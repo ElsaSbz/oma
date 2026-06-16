@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Strategic Consultant</title>
+    <!-- EmailJS loaded FIRST before any usage -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <style>
         * {
             margin: 0;
@@ -100,6 +102,12 @@
             background: #d97706;
         }
 
+        .btn-primary:disabled {
+            background: #92400e;
+            cursor: not-allowed;
+            opacity: 0.7;
+        }
+
         .btn-secondary {
             border: 1px solid #334155;
             color: #cbd5e1;
@@ -123,7 +131,6 @@
         .hero-image img {
             width: 100%;
             height: 700px;
-           /* object-fit: cover;*/
         }
 
         .hero-image-bg {
@@ -449,6 +456,16 @@
             width: 100%;
         }
 
+        .error-message {
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            color: #fca5a5;
+            padding: 12px 16px;
+            border-radius: 8px;
+            font-size: 0.875rem;
+            display: none;
+        }
+
         .success-message {
             display: flex;
             flex-direction: column;
@@ -529,7 +546,7 @@
             <div class="hero-grid">
                 <div class="hero-content">
                     <h1>Stop Guessing!  <span class="highlight">Start Deciding.</span></h1>
-                    <p>Many companies don’t struggle because they lack effort. They struggle because product decisions, marketing activities, and business goals are not aligned.</p>
+                    <p>Many companies don't struggle because they lack effort. They struggle because product decisions, marketing activities, and business goals are not aligned.</p>
                      <h2><span class="highlight">Every Move Matters...</span></h2>
                     <p>I help founders and digital teams turn ideas into scalable, revenue-driven products.
                          10+ years leading product and growth across fintech, marketplaces, and SaaS.
@@ -541,7 +558,6 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
                             </svg>
                         </a>
-
                     </div>
                 </div>
                 <div class="hero-image">
@@ -645,13 +661,12 @@ Change support for leadership teams
             <div class="about-grid">
                 <div class="about-image">
                     <img src="assets/me.png" alt="Professional consultant">
-
                 </div>
                 <div class="about-content">
                     <h2>About Me</h2>
                     <div>
                         <p>
-I’m Elsa and live in Finland. I am a product and growth leader with over a decade of experience
+I'm Elsa and live in Finland. I am a product and growth leader with over a decade of experience
 building and scaling digital businesses used by millions,
                             such as  <a href="divar.ir" class="highlight"> Divar </a>   and  <a href="digikala.com" class="highlight">Digikala </a>.
 </p>
@@ -673,48 +688,45 @@ This includes designing product strategies, introducing data-informed decision f
 </p>
 
                          <p>
-                    <a href="https://www.linkedin.com/in/shadisabzali/" class="highlight"> Visit My Linkedin</a>
+                    <a href="https://www.linkedin.com/in/esabzali/" class="highlight"> Visit My Linkedin</a>
                 </p>
                     </div>
-
                 </div>
-                </div>
-                <div class="about-experience">
-                        <div class="experience-item">
-                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
-                            </svg>
-                            <h4>10+ Years Experience</h4>
-                            <p>10+ Years of Experience
-Designing, launching, and scaling digital products and marketplaces.</p>
-                        </div>
-                        <div class="experience-item">
-                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/>
-                            </svg>
-                            <h4>Cross-Functional Leadership</h4>
-                            <p>Aligning product, marketing, data, and business teams around shared outcomes</p>
-                        </div>
-                        <div class="experience-item">
-                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/>
-                            </svg>
-                            <h4>Proven Business Impact</h4>
-                            <p>Delivering measurable growth, stronger unit economics, and faster time-to-market.</p>
-                        </div>
-                        <div class="experience-item">
-                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path d="M12 14l9-5-9-5-9 5 9 5z"/>
-                                <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/>
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"/>
-                            </svg>
-                            <h4>Practical, Data-Informed Approach</h4>
-                            <p>Replacing assumptions with insight to support confident decision-making.</p>
-                        </div>
-                    </div>
-
             </div>
-       <!-- </div> -->
+            <div class="about-experience">
+                <div class="experience-item">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                    </svg>
+                    <h4>10+ Years Experience</h4>
+                    <p>10+ Years of Experience
+Designing, launching, and scaling digital products and marketplaces.</p>
+                </div>
+                <div class="experience-item">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/>
+                    </svg>
+                    <h4>Cross-Functional Leadership</h4>
+                    <p>Aligning product, marketing, data, and business teams around shared outcomes</p>
+                </div>
+                <div class="experience-item">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/>
+                    </svg>
+                    <h4>Proven Business Impact</h4>
+                    <p>Delivering measurable growth, stronger unit economics, and faster time-to-market.</p>
+                </div>
+                <div class="experience-item">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 14l9-5-9-5-9 5 9 5z"/>
+                        <path d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"/>
+                    </svg>
+                    <h4>Practical, Data-Informed Approach</h4>
+                    <p>Replacing assumptions with insight to support confident decision-making.</p>
+                </div>
+            </div>
+        </div>
     </section>
 
     <!-- Testimonials Section -->
@@ -753,7 +765,6 @@ Designing, launching, and scaling digital products and marketplaces.</p>
                         "Our digital marketing ROI increased by 300% within six months. The expertise in campaign optimization and analytics was exactly what we needed.She combines strategic clarity with hands-on execution, and her ability to translate complex ideas into practical, high-impact solutions made a measurable difference to our growth."
                     </div>
                 </div>
-
                 <div class="testimonial-card">
                     <div class="testimonial-header">
                         <div class="testimonial-avatar">
@@ -780,38 +791,27 @@ Her strong analytical mindset, high sense of responsibility, and professional su
             <div class="contact-wrapper">
                 <div class="section-header light">
                     <h2>Let's Work Together</h2>
-
                     <p>Ready to transform your business? Get in touch to schedule a consultation</p>
                 </div>
                 <div class="contact-grid">
-
                     <div class="contact-info">
-
                         <div>
                             <h2>Let's talk if you are ...</h2>
-<ul>
-  <li>Early-stage founders validating product-market fit</li>
-  <li>Growth-stage startups optimizing revenue</li>
-  <li>Digital teams stuck in execution chaos</li>
-    <li>Traditional Business owner want to grow your market in Digital area</li>
-</ul>
-
-
+                            <ul>
+                                <li>Early-stage founders validating product-market fit</li>
+                                <li>Growth-stage startups optimizing revenue</li>
+                                <li>Digital teams stuck in execution chaos</li>
+                                <li>Traditional Business owner want to grow your market in Digital area</li>
+                            </ul>
                         </div>
                         <div class="contact-divider">
-<div class="contact-item">
+                            <div class="contact-item">
                                 <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
                                 </svg>
                                 <div>
                                     <div class="contact-item-label">Email</div>
                                     <div class="contact-item-value">elsasbz25@outlook.com</div>
-                                </div>
-                            </div>
-                            <div class="contact-item">
-
-                                <div>
-
                                 </div>
                             </div>
                             <p class="contact-note">Typical response time: Within 24 hours</p>
@@ -821,7 +821,7 @@ Her strong analytical mindset, high sense of responsibility, and professional su
                         <form id="contactForm" class="contact-form">
                             <div class="form-group">
                                 <label for="name">Your Name *</label>
-                                <input type="name" id="name" name="email" placeholder="Your Name" required>
+                                <input type="text" id="name" name="name" placeholder="Your Name" required>
                             </div>
                             <div class="form-group">
                                 <label for="email">Email Address *</label>
@@ -835,7 +835,10 @@ Her strong analytical mindset, high sense of responsibility, and professional su
                                 <label for="message">Message (Optional)</label>
                                 <textarea id="message" name="message" rows="4" placeholder="Tell me about your project..."></textarea>
                             </div>
-                            <button type="submit" class="btn-primary form-submit">
+                            <div id="errorMessage" class="error-message">
+                                Something went wrong. Please try again or email directly at elsasbz25@outlook.com
+                            </div>
+                            <button type="submit" id="submitBtn" class="btn-primary form-submit">
                                 Send Request
                                 <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/>
@@ -859,69 +862,71 @@ Her strong analytical mindset, high sense of responsibility, and professional su
     </section>
 
     <script>
-        (function(){
-            emailjs.init("YOUR_USER_ID"); // Replace with your EmailJS user ID
-        })();
-        // Smooth scroll for anchor links
+        // ─── EmailJS Setup ───────────────────────────────────────────────────────────
+        // Initialize EmailJS with your public key
+        emailjs.init('1WlguhDepXi_sI7Jb');
+
+        // ─── Smooth scroll ───────────────────────────────────────────────────────────
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
                 }
             });
-             emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", templateParams)
-                .then(function(response) {
-                    console.log("SUCCESS!", response.status, response.text);
-                    alert("Email sent successfully!");
-                }, function(error) {
-                    console.log("FAILED...", error);
-                    alert("Email sending failed.");
-                });
         });
 
-        // Contact form handling
-        const contactForm = document.getElementById('contactForm');
-        const successMessage = document.getElementById('successMessage');
+        // ─── Contact Form ────────────────────────────────────────────────────────────
+        const contactForm   = document.getElementById('contactForm');
+        const successMsg    = document.getElementById('successMessage');
+        const errorMsg      = document.getElementById('errorMessage');
+        const submitBtn     = document.getElementById('submitBtn');
 
-        contactForm.addEventListener('submit', function(e) {
+        contactForm.addEventListener('submit', function (e) {
             e.preventDefault();
 
-            // Get form data
-            const formData = {
-                name: document.getElementById('name').value,
-                email: document.getElementById('email').value,
-                phone: document.getElementById('phone').value,
-                message: document.getElementById('message').value
+            // Hide any previous error
+            errorMsg.style.display = 'none';
+
+            // Disable button while sending
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Sending…';
+
+            // Build the template params — these must match the variable names
+            // you set up in your EmailJS template (e.g. {{from_name}}, {{from_email}} etc.)
+            const templateParams = {
+                from_name:  document.getElementById('name').value,
+                from_email: document.getElementById('email').value,
+                phone:      document.getElementById('phone').value,
+                message:    document.getElementById('message').value || '—',
+                to_email:   'shadisabzali1991@gmail.com'   // destination address
             };
 
-            // Log form data (in production, send to backend)
-            console.log('Form submitted:', formData);
+            // ── Replace 'contact_service' and 'contact_template' with your real IDs ──
+            emailjs.send('service_87fp47r', 'template_402idwf', templateParams)
+                .then(function () {
+                    // Success
+                    contactForm.classList.add('hidden');
+                    successMsg.classList.remove('hidden');
 
-            // Show success message
-            contactForm.classList.add('hidden');
-            successMessage.classList.remove('hidden');
-
-            // Reset form after 3 seconds
-            setTimeout(() => {
-                contactForm.classList.remove('hidden');
-                successMessage.classList.add('hidden');
-                contactForm.reset();
-            }, 3000);
+                    // Reset after 4 seconds
+                    setTimeout(function () {
+                        contactForm.classList.remove('hidden');
+                        successMsg.classList.add('hidden');
+                        contactForm.reset();
+                        submitBtn.disabled = false;
+                        submitBtn.innerHTML = 'Send Request <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/></svg>';
+                    }, 4000);
+                })
+                .catch(function (error) {
+                    // Error — show inline error message
+                    console.error('EmailJS error:', error);
+                    errorMsg.style.display = 'block';
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = 'Send Request <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/></svg>';
+                });
         });
     </script>
-    <script
-        type="text/javascript"
-        src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
-    </script>
-    emailjs.init({
-        publicKey: '1WlguhDepXi_sI7Jb',
-    });
-    emailjs.sendForm('contact_service', 'contact_form', this);
-
 </body>
 </html>
